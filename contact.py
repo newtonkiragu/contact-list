@@ -76,5 +76,9 @@ class Contact:
 
     @classmethod
     def copy_email(cls,number):
+        '''
+        Method that copies the found contact's email to the primary clipboard
+        '''
+        
         contact_found = Contact.find_by_number(number)
         pyperclip.copy(contact_found.email)
