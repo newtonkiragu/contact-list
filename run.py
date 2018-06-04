@@ -110,7 +110,7 @@ def main():
                 print(f'{search_contact.first_name} {search_contact.last_name}')
                 print('-' * 20)
 
-                contact.delete_contact(search_contact)
+                del_contact(search_contact)
                 print('Your contact has been deleted')
 
             else:
