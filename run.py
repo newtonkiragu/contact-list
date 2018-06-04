@@ -51,7 +51,7 @@ def main():
     print('\n')
 
     while True:
-        print("Use these short codes: \n cc - create a new contact \n dc - display contacts \n fc - find a contact \n ex - exit the contact list app")
+        print("Use these short codes: \n cc - create a new contact \n dc - display contacts \n fc - find a contact \n ex - exit the contact list app \n del - delete a contact \n cpc - copy a contact email")
 
         short_code = input().lower()
 
@@ -79,7 +79,7 @@ def main():
                 print('\n')
 
                 for contact in display_contacts():
-                    print(f'{contact.first_name} {contact.last_name} ......{contact.phone_number}')
+                    print(f'{contact.first_name} {contact.last_name} ......{contact.number}')
 
                 print('\n')
             else:
@@ -89,17 +89,44 @@ def main():
 
         elif short_code == 'fc':
 
-            search_number = input('Enter the number you want to search for:')
+            search_number = input('Enter the number you want to search for: ')
 
             if check_existing_contacts(search_number):
                 search_contact = find_contact(search_number)
                 print(f'{search_contact.first_name} {search_contact.last_name}')
                 print('-' * 20)
 
-                print(f'Phone number...... {search_contact.phone_number} \n Email address...... {search_contact.email}')
+                print(f'Phone number......: {search_contact.phone_number} \n Email address......: {search_contact.email}')
 
             else:
                 print('That contact does not exist')
+
+        elif short_code == 'del':
+            
+            search_number = input('Enter the number you want to delete: ')
+
+            if check_existing_contacts(search_number):
+                search_contact = find_contact(search_number)
+                print(f'{search_contact.first_name} {search_contact.last_name}')
+                print('-' * 20)
+
+                contact.delete_contact(search_contact)
+                print('Your contact has been deleted')
+
+            else:
+                print('That contact does not exist')
+
+        elif short_code == 'cpc':
+
+            search_number = input('Enter the number you want to copy: ')
+
+            if check_existing_contacts(search_number):
+                search_contact = find_contact(search_number)
+                print(f'{search_contact.first_name} {search_contact.last_name}')
+                print('-' * 20)
+
+                contact.copy_email(search_number)
+                print('\n Your contact has been copied. \n')
 
         elif short_code == 'ex':
             print('Bye..... It was fun while it lasted.... :-)')
