@@ -125,7 +125,7 @@ def main():
                 print(f'{search_contact.first_name} {search_contact.last_name}')
                 print('-' * 20)
 
-                contact.copy_email(search_number)
+                Contact.copy_email(search_number)
                 print('\n Your contact has been copied. \n')
 
         elif short_code == 'ex':
